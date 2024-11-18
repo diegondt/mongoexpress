@@ -1,9 +1,8 @@
-Para instalar mongodb:
+Para instalar mongodb podeis seguir las instrucciones de la [documentación oficial](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/)
 
-```bash
-```
+Aseguraos de seguir el tutorial paso a paso, y de elegir correctamente la version de Ubuntu que estais utilizando.
 
-Para controlar el sevidor:
+Una vez instalado, para controlar el sevidor:
 
 ```bash
 sudo systemctl status mongod.service  # comprueba el estado del servidor
