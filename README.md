@@ -53,8 +53,4 @@ teztz> db.usuarios.find({nombre: "user0"})
 teztz> 
 ```
 
-Y luego crea un servidor de `Express` como este:
-
-```js
-
-```
+Instala las dependencias del proyecto con `npm install` y arranca el servidor con `nodemon server.js` o `node server.js`.

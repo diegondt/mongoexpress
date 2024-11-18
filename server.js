@@ -6,8 +6,8 @@ const app = express()
 const port = 3000
 const USER = process.env.USER
 const PASSWORD = process.env.PASSWORD
-mongoose.connect('mongodb://localhost:27017/teztz', { useNewUrlParser: true, useUnifiedTopology: true })
 //mongoose.connect(`mongodb://${USER}:${PASSWORD}@0.0.0.0:27017/teztz`, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://localhost:27017/teztz', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('Conexión a la base de datos establecida')
   })
