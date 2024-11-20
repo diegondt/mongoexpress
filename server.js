@@ -7,6 +7,9 @@ const port = 3000
 const USER = process.env.USER
 const PASSWORD = process.env.PASSWORD
 //mongoose.connect(`mongodb://${USER}:${PASSWORD}@0.0.0.0:27017/teztz`, { useNewUrlParser: true, useUnifiedTopology: true })
+
+app.use(express.json())
+
 mongoose.connect('mongodb://localhost:27017/teztz', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('Conexión a la base de datos establecida')
@@ -34,6 +37,26 @@ app.get("/usuarios", async (req, res) => {
 app.get("/usuarios/:nombre", async (req, res) => {
   const { nombre } = req.params
   const usuario = await Usuario.findOne({ nombre })
+  res.json(usuario)
+});
+
+app.post("/usuarios", async (req, res) => {
+  const { nombre, password } = req.body
+  const usuario = new Usuario({ nombre, password })
+  await usuario.save()
+  res.json(usuario)
+});
+
+app.put("/usuarios/:nombre", async (req, res) => {
+  const { nombre } = req.params
+  const { password } = req.body
+  const usuario = await Usuario.findOneAndUpdate({ nombre }, { password }, { new: true })
+  res.json(usuario)
+});
+
+app.delete("/usuarios/:nombre", async (req, res) => {
+  const { nombre } = req.params
+  const usuario = await Usuario.findOneAndDelete({ nombre })
   res.json(usuario)
 });
 
