@@ -61,7 +61,7 @@ app.put("/usuarios/:nombre", async (req, res) => {
 app.delete("/usuarios/:nombre", async (req, res) => {
   const { nombre } = req.params
   const usuario = await Usuario.findOneAndDelete({ nombre })
-  res.json(usuario)
+  res.status(204).json(usuario)
 });
 
 app.listen(port, () => {
