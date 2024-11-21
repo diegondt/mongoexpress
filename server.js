@@ -26,18 +26,18 @@ const usuarioSchema = new mongoose.Schema({
 const Usuario = mongoose.model('usuarios', usuarioSchema)
 
 app.get("/", (req, res) => {
-  res.send("Hola mundo")
+  res.status(200).send("Hola mundo")
 })
 
 app.get("/usuarios", async (req, res) => {
   const usuarios = await Usuario.find()
-  res.json(usuarios)
+  res.status(200).json(usuarios)
 });
 
 app.get("/usuarios/:nombre", async (req, res) => {
   const { nombre } = req.params
   const usuario = await Usuario.findOne({ nombre })
-  res.json(usuario)
+  res.status(200).json(usuario)
 });
 
 app.post("/usuarios", async (req, res) => {
@@ -55,7 +55,7 @@ app.put("/usuarios/:nombre", async (req, res) => {
   const { nombre } = req.params
   const { password } = req.body
   const usuario = await Usuario.findOneAndUpdate({ nombre }, { password }, { new: true })
-  res.json(usuario)
+  res.status(200).json(usuario)
 });
 
 app.delete("/usuarios/:nombre", async (req, res) => {
