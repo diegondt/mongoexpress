@@ -1,11 +1,11 @@
-require('dotenv').config()
+//require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 
 const app = express()
 const port = 3000
-const USER = process.env.USER
-const PASSWORD = process.env.PASSWORD
+//const USER = process.env.USER
+//const PASSWORD = process.env.PASSWORD
 //mongoose.connect(`mongodb://${USER}:${PASSWORD}@0.0.0.0:27017/teztz`, { useNewUrlParser: true, useUnifiedTopology: true })
 
 app.use(express.json())
@@ -31,7 +31,7 @@ app.get("/", (req, res) => {
 
 app.get("/usuarios", async (req, res) => {
   const usuarios = await Usuario.find()
-  res.status(200).json(usuarios)
+  res.json(usuarios)
 });
 
 app.get("/usuarios/:nombre", async (req, res) => {
