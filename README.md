@@ -53,3 +53,22 @@ teztz>
 ```
 
 Instala las dependencias del proyecto con `npm install` y arranca el servidor con `nodemon server.js` o `node server.js`.
+
+Para probar los endpoints:
+
+```bash
+curl localhost:3000/usuarios
+```
+
+```bash
+curl -X POST -d '{"nombre":"test", "password":"1234"}' -H "Content-Type: application/json localhost:3000/usuarios"
+```
+
+```bash
+curl -X PUT -d '{"nombre":"user", "password":"contraseña_nueva"}' -H "Content-Type: application/json" localhost:3000/usuarios/test
+```
+
+```bash
+curl -X DELETE -H "Content-Type: application/json localhost:3000/usuarios/admin"
+```
+

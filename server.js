@@ -42,9 +42,13 @@ app.get("/usuarios/:nombre", async (req, res) => {
 
 app.post("/usuarios", async (req, res) => {
   const { nombre, password } = req.body
-  const usuario = new Usuario({ nombre, password })
-  await usuario.save()
-  res.json(usuario)
+  try {
+    const usuario = new Usuario({ nombre, password })
+    await usuario.save()
+    res.status(201).json(usuario)
+  } catch (error) {
+    res.status(400).json({ error: error.message })
+  }
 });
 
 app.put("/usuarios/:nombre", async (req, res) => {
